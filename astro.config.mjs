@@ -5,6 +5,7 @@ import react from '@astrojs/react';
 
 // https://astro.build/config
 export default defineConfig({
+    site: 'https://fitpilot.app', // Placeholder for production URL
     integrations: [react()],
     vite: {
         plugins: [tailwindcss()],
