@@ -31,7 +31,8 @@ const CalendarIcon = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBo
                 <p class="text-xl text-gray-500 max-w-lg leading-relaxed" data-aos="fade-up" data-aos-delay="100">
                     {t('train.hero.description')}
                 </p>
-                <div class="flex flex-wrap gap-4" data-aos="fade-up" data-aos-delay="200">
+                <p class="text-sm text-gray-400 font-medium tracking-wide uppercase" data-aos="fade-in" data-aos-delay="300">{t('train.hero.subtext')}</p>
+                <div class="flex flex-wrap gap-4 justify-center lg:justify-start" data-aos="fade-up" data-aos-delay="200">
                      <MotionButton client:load className={`
                          bg-primary hover:bg-primary/90 text-white px-8 py-4 
                          rounded-xl font-medium shadow-lg transition-colors
@@ -45,7 +46,6 @@ const CalendarIcon = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBo
                          {t('train.hero.demo')}
                       </MotionButton>
                 </div>
-                <p class="text-sm text-gray-400 font-medium tracking-wide uppercase" data-aos="fade-in" data-aos-delay="300">{t('train.hero.subtext')}</p>
             </div>
             
              <!-- Hero Image with floating effect -->

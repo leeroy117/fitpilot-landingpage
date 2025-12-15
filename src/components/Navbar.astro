@@ -1,6 +1,7 @@
 ---
 import { MotionButton } from '@components/MotionButton';
 import { useTranslations } from '../i18n/utils';
+import { MobileBottomNav } from './MobileBottomNav';
 import LanguagePicker from './LanguagePicker.astro';
 
 
@@ -43,16 +44,35 @@ const pricingLink = isPricingPage
         `}>{t('nav.contact')}</a>
       </div>
 
-      <a href={pricingLink}>
-        <MotionButton client:load className={`bg-primary hover:bg-primary/90 
-          text-white px-5 py-2 rounded-xl font-medium text-sm transition-colors 
-          shadow-md cursor-pointer`}
-        >
-          {t('nav.explore')}
-        </MotionButton>
-      </a>
+      <div class="hidden md:block">
+        <a href={pricingLink}>
+          <MotionButton client:load className={`bg-primary hover:bg-primary/90 
+            text-white px-5 py-2 rounded-xl font-medium text-sm transition-colors 
+            shadow-md cursor-pointer`}
+          >
+            {t('nav.explore')}
+          </MotionButton>
+        </a>
+      </div>
 
       <LanguagePicker />
+
     </div>
   </div>
 </nav>
+
+<!-- Mobile Bottom Nav -->
+<MobileBottomNav 
+  client:load 
+  label={t('nav.explore')}
+  links={{
+    trainers: { 
+      label: t('nav.trainers'), 
+      url: lang === 'es' ? '/es/trainers#pricing' : '/trainers#pricing' 
+    },
+    nutritionists: { 
+      label: t('nav.nutritionists'), 
+      url: lang === 'es' ? '/es/nutritionists#pricing' : '/nutritionists#pricing' 
+    }
+  }} 
+/>
