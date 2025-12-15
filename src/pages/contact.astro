@@ -1,0 +1,101 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import { MotionButton } from '../components/MotionButton';
+import { useTranslations } from '../i18n/utils';
+
+const lang = Astro.currentLocale || 'en';
+const t = useTranslations(lang as any);
+---
+
+<Layout title={t('contact.meta.title')}>
+  <Navbar />
+  
+  <main class="relative overflow-hidden pt-32 pb-24">
+    <!-- Background Decor -->
+    <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-3xl -z-10 animate-fade-in-right"></div>
+    <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-green-500/5 rounded-full blur-3xl -z-10 animate-fade-in-left"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-16 animate-fade-in-up">
+        <h1 class="text-5xl font-display font-bold text-gray-900 mb-6">{t('contact.title')}</h1>
+        <p class="text-xl text-gray-500">{t('contact.subtitle')}</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
+        <!-- Contact Information -->
+        <div class="space-y-12 animate-fade-in-left delay-200">
+             <div>
+                 <h2 class="text-2xl font-bold text-gray-900 mb-6">{t('contact.info.title')}</h2>
+                 <p class="text-gray-500 leading-relaxed mb-8">
+                     We are here to help you revolutionize your fitness business. Reach out to us directly through email or social channels.
+                 </p>
+             </div>
+
+             <div class="space-y-6">
+                 <div class="flex items-center gap-4 group">
+                     <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" /></svg>
+                     </div>
+                     <div>
+                         <p class="text-sm font-semibold text-gray-400 uppercase tracking-wide">Email</p>
+                         <a href={`mailto:${t('contact.info.email')}`} class="text-lg font-medium text-gray-900 hover:text-primary transition-colors">{t('contact.info.email')}</a>
+                     </div>
+                 </div>
+
+                 <div class="flex items-center gap-4 group">
+                     <div class="w-12 h-12 bg-green-50 text-green-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" /></svg>
+                     </div>
+                     <div>
+                         <p class="text-sm font-semibold text-gray-400 uppercase tracking-wide">Location</p>
+                         <p class="text-lg font-medium text-gray-900">{t('contact.info.location')}</p>
+                     </div>
+                 </div>
+             </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="bg-white p-8 md:p-10 rounded-3xl shadow-xl border border-gray-100 animate-fade-in-up delay-300">
+            <form 
+              name="contact" 
+              method="POST" 
+              data-netlify="true"
+              action="/success"
+              class="space-y-6"
+            >
+                <!-- Needed for Netlify Forms -->
+                <input type="hidden" name="form-name" value="contact" />
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="space-y-2">
+                        <label for="name" class="text-sm font-semibold text-gray-700 ml-1">{t('contact.form.name')}</label>
+                        <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors outline-none bg-gray-50/50 focus:bg-white" placeholder="John Doe" />
+                    </div>
+                    <div class="space-y-2">
+                        <label for="email" class="text-sm font-semibold text-gray-700 ml-1">{t('contact.form.email')}</label>
+                        <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors outline-none bg-gray-50/50 focus:bg-white" placeholder="john@example.com" />
+                    </div>
+                </div>
+
+                <div class="space-y-2">
+                    <label for="subject" class="text-sm font-semibold text-gray-700 ml-1">{t('contact.form.subject')}</label>
+                    <input type="text" id="subject" name="subject" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors outline-none bg-gray-50/50 focus:bg-white" placeholder={t('contact.form.subject_placeholder')} />
+                </div>
+
+                <div class="space-y-2">
+                    <label for="message" class="text-sm font-semibold text-gray-700 ml-1">{t('contact.form.message')}</label>
+                    <textarea id="message" name="message" rows="4" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors outline-none bg-gray-50/50 focus:bg-white resize-none"></textarea>
+                </div>
+
+                <MotionButton type="submit" client:load className="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 rounded-xl shadow-lg transition-transform active:scale-95 hover:cursor-pointer">
+                    {t('contact.form.submit')}
+                </MotionButton>
+            </form>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  <Footer />
+</Layout>

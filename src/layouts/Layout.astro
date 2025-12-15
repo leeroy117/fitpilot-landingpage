@@ -8,7 +8,7 @@ interface Props {
 const { 
 	title = "FitPilot - App for Trainers & Nutritionists",
 	description = "FitPilot - The #1 App for Trainers and Nutritionists", 
-	image = "/fitpilot_logo.png" 
+	image = "/social_logo_small.png" 
 } = Astro.props;
 
 const lang = Astro.currentLocale || 'en';
@@ -48,9 +48,19 @@ const socialImageURL = new URL(image, Astro.url);
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
 		<ClientRouter />
+		<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 	</head>
 	<body>
 		<slot />
+		<script is:inline src="https://unpkg.com/aos@next/dist/aos.js"></script>
+		<script is:inline>
+		  AOS.init({
+			duration: 800,
+			once: true,
+			offset: 100,
+			easing: 'ease-out-cubic',
+		  });
+		</script>
 	</body>
 </html>
 

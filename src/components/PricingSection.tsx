@@ -26,7 +26,7 @@ export const PricingSection: React.FC<PricingProps> = ({ title, subtitle, plans,
   const [currency, setCurrency] = useState<'MXN' | 'USD'>('MXN');
 
   const CheckIcon = () => (
-    <svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+    <svg className="w-5 h-5 text-green-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
       <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
     </svg>
   );
@@ -34,7 +34,7 @@ export const PricingSection: React.FC<PricingProps> = ({ title, subtitle, plans,
   return (
     <section className="py-24 bg-white relative overflow-hidden">
         {/* Background blobs for flair */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-tr from-green-50 to-blue-50 rounded-full blur-3xl opacity-50 -z-10 pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-linear-to-tr from-green-50 to-blue-50 rounded-full blur-3xl opacity-50 -z-10 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-4xl font-display font-bold text-center mb-4 text-gray-900 tracking-tight">{title}</h2>
@@ -63,13 +63,13 @@ export const PricingSection: React.FC<PricingProps> = ({ title, subtitle, plans,
              */}
              <button
                 onClick={(e) => { e.stopPropagation(); setCurrency('MXN'); }}
-                className={`relative z-10 px-8 py-2.5 rounded-full text-sm font-bold transition-colors duration-200 ${currency === 'MXN' ? 'text-gray-900' : 'text-gray-500 hover:text-gray-700'}`}
+                className={`relative z-10 px-8 py-2.5 rounded-full text-sm font-bold transition-colors duration-200 cursor-pointer ${currency === 'MXN' ? 'text-gray-900' : 'text-gray-500 hover:text-gray-700'}`}
              >
                 MXN ($)
              </button>
              <button
                 onClick={(e) => { e.stopPropagation(); setCurrency('USD'); }}
-                className={`relative z-10 px-8 py-2.5 rounded-full text-sm font-bold transition-colors duration-200 ${currency === 'USD' ? 'text-gray-900' : 'text-gray-500 hover:text-gray-700'}`}
+                className={`relative z-10 px-8 py-2.5 rounded-full text-sm font-bold transition-colors duration-200 cursor-pointer ${currency === 'USD' ? 'text-gray-900' : 'text-gray-500 hover:text-gray-700'}`}
              >
                 USD ($)
              </button>
@@ -129,7 +129,7 @@ export const PricingSection: React.FC<PricingProps> = ({ title, subtitle, plans,
                 </ul>
 
                 <button className={`
-                    w-full py-4 rounded-xl font-bold transition-all duration-300 shadow-lg
+                    w-full py-4 rounded-xl font-bold transition-all duration-300 shadow-lg cursor-pointer
                     ${plan.isPopular
                         ? 'bg-green-600 text-white hover:bg-green-700 shadow-green-200'
                         : 'bg-white border border-gray-200 text-gray-900 hover:bg-gray-50 hover:border-gray-300'

@@ -6,6 +6,12 @@ import LanguagePicker from './LanguagePicker.astro';
 
 const lang = Astro.currentLocale || 'en';
 const t = useTranslations(lang as any);
+
+const pathname = Astro.url.pathname;
+const isPricingPage = pathname.includes('/trainers') || pathname.includes('/nutritionists');
+const pricingLink = isPricingPage 
+  ? '#pricing' 
+  : (lang === 'es' ? '/es/trainers#pricing' : '/trainers#pricing');
 ---
 <nav class={`fixed w-full z-50 
   bg-white/80 backdrop-blur-md border-b 
@@ -27,18 +33,24 @@ const t = useTranslations(lang as any);
             text-gray-600 hover:text-primary 
             font-medium text-sm transition-colors
         `}>{t('nav.nutritionists')}</a>
-        <a href="#" class={`
+        <!-- <a href="#" class={`
             text-gray-600 hover:text-primary 
             font-medium text-sm transition-colors
-        `}>{t('nav.platform')}</a>
+        `}>{t('nav.platform')}</a> -->
+        <a href={lang === 'es' ? '/es/contact' : '/contact'} class={`
+            text-gray-600 hover:text-primary 
+            font-medium text-sm transition-colors
+        `}>{t('nav.contact')}</a>
       </div>
 
-      <MotionButton client:load className={`bg-primary hover:bg-primary/90 
-      text-white px-5 py-2 rounded-xl font-medium text-sm transition-colors 
-        shadow-md  cursor-pointer`}
-      >
-        {t('nav.explore')}
-      </MotionButton>
+      <a href={pricingLink}>
+        <MotionButton client:load className={`bg-primary hover:bg-primary/90 
+          text-white px-5 py-2 rounded-xl font-medium text-sm transition-colors 
+          shadow-md cursor-pointer`}
+        >
+          {t('nav.explore')}
+        </MotionButton>
+      </a>
 
       <LanguagePicker />
     </div>

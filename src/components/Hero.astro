@@ -11,7 +11,7 @@ const t = useTranslations(lang as any);
       inline-flex items-center gap-2 px-3 py-1 rounded-full 
       bg-blue-50 border border-blue-100 text-blue-600 
       text-xs font-medium mb-6
-    `}>
+    `} data-aos="fade-down">
       <span class="relative flex h-2 w-2">
         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
         <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
@@ -19,17 +19,17 @@ const t = useTranslations(lang as any);
       {t('hero.badge')}
     </div>
 
-    <h1 class="text-4xl md:text-6xl font-display font-extrabold text-secondary tracking-tight mb-4">
+    <h1 class="text-4xl md:text-6xl font-display font-extrabold text-secondary tracking-tight mb-4" data-aos="fade-up" data-aos-delay="100">
       {t('hero.empowering')} <br class="hidden md:block"/>
       <span class={`bg-gradient-to-r from-primary via-blue-400
         to-nutrition-500 text-transparent bg-clip-text`}>{t('hero.title_highlight')}</span>
     </h1>
 
-    <p class="text-gray-600 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
+    <p class="text-gray-600 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed" data-aos="fade-up" data-aos-delay="200">
       {t('hero.description')}
     </p>
 
-    <div class="flex flex-col sm:flex-row justify-center gap-8 @max-xs:gap-4 mb-20">
+    <div class="flex flex-col sm:flex-row justify-center gap-8 @max-xs:gap-4 mb-20" data-aos="fade-up" data-aos-delay="300">
       <MotionButton client:load className={`
           bg-secondary text-white px-8 py-3.5 rounded-full 
           font-semibold hover:bg-secondary/90 shadow-lg flex 
@@ -51,7 +51,7 @@ const t = useTranslations(lang as any);
     <div class={`
         relative max-w-5xl mx-auto rounded-3xl p-2 md:p-4 
         bg-white/40 backdrop-blur-sm border border-white/50 shadow-2xl
-    `}>
+    `} data-aos="zoom-in" data-aos-delay="400">
       <div class="relative rounded-2xl overflow-hidden aspect-[4/5] md:aspect-[21/9]">
          <!-- Main Hero Image -->
          <img 
@@ -65,8 +65,8 @@ const t = useTranslations(lang as any);
              <!-- Floating Element: Active Calories (Left Desktop, Top Mobile) -->
              <div class={`bg-white/90 backdrop-blur md:absolute
              md:bottom-8 md:left-8 md:p-3 p-3 rounded-xl
-             shadow-lg flex items-center gap-3 animate-fade-in-up
-             border border-gray-100/50 w-full md:w-auto`}>
+             shadow-lg flex items-center gap-3
+             border border-gray-100/50 w-full md:w-auto`} data-aos="fade-right" data-aos-delay="600">
                 <div class="bg-primary/10 p-2 rounded-lg text-primary">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
                 </div>
@@ -79,8 +79,8 @@ const t = useTranslations(lang as any);
              <!-- Floating Element: BMI (Right Desktop, Bottom Mobile) -->
              <div class={`bg-white/90 backdrop-blur md:absolute
              md:bottom-8 md:right-8 md:p-3 p-3 rounded-xl
-             shadow-lg flex items-center gap-3 animate-fade-in-up
-             delay-100 border border-gray-100/50 w-full md:w-auto`}>
+             shadow-lg flex items-center gap-3
+             border border-gray-100/50 w-full md:w-auto`} data-aos="fade-left" data-aos-delay="700">
                 <div class="bg-nutrition-500/10 p-2 rounded-lg text-nutrition-500">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
                 </div>
@@ -91,12 +91,6 @@ const t = useTranslations(lang as any);
              </div>
          </div>
       </div>
-      
-      <!-- Decorative Side Floating Icons -->
-      <!-- <div class="absolute top-1/2 -right-12 md:-right-16 -translate-y-1/2 bg-white p-3 rounded-2xl shadow-xl hidden lg:block animate-bounce-slow">
-         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-secondary"><path d="M12 21.37z"/><path d="M12 21.37z"/><path d="M12 21.37z"/><path d="M12 21.37A2 2 0 0 0 13.5 20.37L15 18H21a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h6l1.5 2.37A2 2 0 0 0 12 21.37z"/></svg>
-      </div> -->
-
     </div>
   </div>
 </section>

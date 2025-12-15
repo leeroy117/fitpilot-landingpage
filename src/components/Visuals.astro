@@ -13,7 +13,9 @@ const visuals = [
 ];
 ---
 <section class="grid grid-cols-2 lg:grid-cols-4 w-full">
-  {visuals.map((visual) => (
-    <VisualCard src={visual.src} alt={visual.alt} />
+  {visuals.map((visual, index) => (
+    <div data-aos="zoom-in" data-aos-delay={index * 100}>
+      <VisualCard src={visual.src} alt={visual.alt} />
+    </div>
   ))}
 </section>
