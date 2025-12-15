@@ -1,0 +1,69 @@
+---
+import { useTranslations } from '../i18n/utils';
+
+const lang = Astro.currentLocale || 'en';
+const t = useTranslations(lang as any);
+---
+<section class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <h2 class="text-3xl md:text-4xl font-display font-bold text-secondary mb-4">
+        {t('management.title')}
+      </h2>
+      <p class="text-gray-600 text-lg">
+        {t('management.subtitle')}
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Card 1 -->
+      <div class={`bg-white rounded-2xl p-8 border
+      border-gray-100 hover:shadow-xl
+      transition-shadow duration-300`}>
+        <div class={`
+            w-12 h-12 bg-blue-100/50 rounded-xl flex items-center 
+            justify-center text-blue-600 mb-6
+        `}>
+           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+        </div>
+        <h3 class="text-xl font-bold text-secondary mb-3">{t('management.card1_title')}</h3>
+        <p class="text-gray-500 leading-relaxed">
+          {t('management.card1_desc')}
+        </p>
+      </div>
+
+       <!-- Card 2 -->
+      <div class={`bg-white rounded-2xl p-8 border
+      border-gray-100 hover:shadow-xl
+      transition-shadow duration-300`}>
+        <div class={`
+            w-12 h-12 bg-sky-100/50 rounded-xl flex items-center 
+            justify-center text-sky-600 mb-6
+        `}>
+           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><path d="M12 18v-4"/><path d="M8 18v-2"/><path d="M16 18v-6"/></svg>
+        </div>
+        <h3 class="text-xl font-bold text-secondary mb-3">{t('management.card2_title')}</h3>
+        <p class="text-gray-500 leading-relaxed">
+          {t('management.card2_desc')}
+        </p>
+      </div>
+
+       <!-- Card 3 -->
+      <div class={`bg-white rounded-2xl p-8 border
+      border-gray-100 hover:shadow-xl
+      transition-shadow duration-300`}>
+        <div class={`
+            w-12 h-12 bg-nutrition-100 rounded-xl flex items-center 
+            justify-center text-nutrition-600 mb-6
+        `}>
+           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><path d="M12 12v9"/><path d="m8 17 4 4 4-4"/></svg>
+        </div>
+        <h3 class="text-xl font-bold text-secondary mb-3">{t('management.card3_title')}</h3>
+        <p class="text-gray-500 leading-relaxed">
+          {t('management.card3_desc')}
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>

@@ -1,0 +1,226 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import { MotionButton } from '../components/MotionButton';
+import { PricingSection } from '../components/PricingSection';
+import { useTranslations } from '../i18n/utils';
+
+// Icons using SVG strings for simplicity
+const ChartBarIcon = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 0 0 6 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0 1 18 16.5h-2.25m-7.5 0h7.5m-7.5 0-1 3m8.5-3 1 3m0 0 .5 1.5m-.5-1.5h-9.5m0 0-.5 1.5m.75-9 3-3 2.148 2.148A12.061 12.061 0 0 1 16.5 7.605" /></svg>`;
+const CalendarIcon = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 9v7.5m-9-6h.008v.008H12v-.008ZM12 15h.008v.008H12V15Zm0 2.25h.008v.008H12v-.008ZM9.75 15h.008v.008H9.75V15Zm0 2.25h.008v.008H9.75v-.008ZM7.5 15h.008v.008H7.5V15Zm0 2.25h.008v.008H7.5v-.008Zm6.75-4.5h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V15Zm0 2.25h.008v.008h-.008v-.008Zm2.25-4.5h.008v.008H16.5v-.008Zm0 2.25h.008v.008H16.5V15Z" /></svg>`;
+const ChatIcon = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 0 1-.825-.242m9.345-8.334a2.126 2.126 0 0 0-.476-.095 48.64 48.64 0 0 0-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0 0 11.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" /></svg>`;
+const MealIcon = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 0 0 3 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 0 0 5.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 0 0 9.568 3Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6Z" /></svg>`;
+
+
+const lang = Astro.currentLocale || 'en';
+const t = useTranslations(lang as any);
+---
+
+<Layout title="For Nutritionists | FitPilot">
+  <Navbar />
+  
+  <main class="overflow-hidden">
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 relative bg-[#F9FAFB]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div class="space-y-8">
+            <!-- <span class="inline-block px-4 py-2 bg-green-100 text-green-700 rounded-full text-sm font-semibold tracking-wide">
+              {t('nutri.hero.badge')}
+            </span> -->
+            <h1 class="text-5xl lg:text-7xl font-display font-bold text-primary leading-tight">
+              {t('nutri.hero.title')}
+            </h1>
+            <p class="text-xl text-gray-500 max-w-lg leading-relaxed">
+              {t('nutri.hero.description')}
+            </p>
+            <div class="flex flex-wrap gap-4">
+              <MotionButton client:load className={`
+                  bg-green-500 hover:bg-green-600 text-white px-8 py-4 
+                  rounded-xl font-medium shadow-lg transition-colors
+              `}>
+                {t('nutri.hero.start')}
+              </MotionButton>
+               <MotionButton client:load className={`
+                   bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 
+                   px-8 py-4 rounded-xl font-medium transition-colors flex items-center gap-2
+               `}>
+                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15.91 11.672a.375.375 0 0 1 0 .656l-5.603 3.113a.375.375 0 0 1-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112Z" />
+                </svg>
+                {t('nutri.hero.demo')}
+              </MotionButton>
+            </div>
+             <p class="text-sm text-gray-400 flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 text-green-500">
+                  <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" />
+                </svg>
+                 No credit card required
+                <span class="mx-2">•</span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 text-green-500">
+                  <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" />
+                </svg>
+                 GDPR Compliant
+             </p>
+          </div>
+          <div class="relative">
+             <div class="absolute -inset-4 bg-green-500/10 rounded-full blur-3xl opacity-50"></div>
+             <img src="/nutritionist_hero_v2.png" alt="Nutritionist Dashboard" class={`
+                 relative rounded-2xl shadow-2xl border border-gray-100 
+                 transform hover:scale-[1.02] transition-transform duration-500
+             `} />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trusted By (Simple Placeholder) -->
+    <!-- <section class="py-10 border-b border-gray-100 bg-white">
+        <div class={`
+            max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-400 
+            uppercase text-sm tracking-widest font-semibold flex justify-center 
+            gap-12 opacity-60
+        `}>
+             <span>NutriHealth</span>
+             <span>WellnessPro</span>
+             <span>CardioDiet</span>
+             <span>MediCare+</span>
+             <span>FitLife</span>
+        </div>
+    </section> -->
+
+    <!-- Features Grid -->
+    <section class="py-24 bg-white relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <h2 class="text-4xl font-display font-bold text-primary mb-4">{t('nutri.features.title')}</h2>
+          <p class="text-xl text-gray-500">{t('nutri.features.subtitle')}</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {[
+            { title: t('nutri.feat1.title'), desc: t('nutri.feat1.desc'), icon: MealIcon, color: 'text-green-600', bg: 'bg-green-50' },
+            { title: t('nutri.feat2.title'), desc: t('nutri.feat2.desc'), icon: ChartBarIcon, color: 'text-green-600', bg: 'bg-green-50' },
+            { title: t('nutri.feat3.title'), desc: t('nutri.feat3.desc'), icon: CalendarIcon, color: 'text-green-600', bg: 'bg-green-50' },
+            { title: t('nutri.feat4.title'), desc: t('nutri.feat4.desc'), icon: ChatIcon, color: 'text-green-600', bg: 'bg-green-50' },
+          ].map((feature) => (
+            <div class={`
+                p-8 rounded-3xl border border-gray-100 hover:shadow-xl 
+                hover:-translate-y-1 transition-all duration-300 bg-white group
+            `}>
+              <div class={`w-12 h-12 rounded-xl ${feature.bg} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform ${feature.color}`} set:html={feature.icon} />
+              <h3 class="text-xl font-bold text-primary mb-3">{feature.title}</h3>
+              <p class="text-gray-500 leading-relaxed">{feature.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Workflow Section -->
+    <section class="py-24 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-display font-bold text-primary mb-16 text-center">{t('nutri.workflow.title')}</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                 <div class="space-y-12">
+                     {[
+                         { step: '1', title: t('nutri.workflow.step1.title'), desc: t('nutri.workflow.step1.desc'), color: 'bg-green-500' },
+                         { step: '2', title: t('nutri.workflow.step2.title'), desc: t('nutri.workflow.step2.desc'), color: 'bg-slate-300' }, // Use slate for inactive look in design, but here all active? Let's make simple lists
+                         { step: '3', title: t('nutri.workflow.step3.title'), desc: t('nutri.workflow.step3.desc'), color: 'bg-orange-400' }
+                     ].map((item) => (
+                         <div class="flex gap-6 group">
+                            <div class={`
+                                w-12 h-12 rounded-full flex items-center justify-center 
+                                text-white font-bold flex-shrink-0 ${item.color} 
+                                shadow-lg group-hover:scale-110 transition-transform
+                            `}>
+                                {item.step}
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-primary mb-2">{item.title}</h3>
+                                <p class="text-gray-500 text-lg">{item.desc}</p>
+                            </div>
+                         </div>
+                     ))}
+                     <a href="#" class="text-green-600 font-semibold flex items-center gap-2 hover:gap-4 transition-all mt-8">
+                        See full feature breakdown <span aria-hidden="true">&rarr;</span>
+                     </a>
+                 </div>
+                 
+                 <div class="grid grid-cols-2 gap-4">
+                     <!-- Abstract UI Cards Construction -->
+                     <div class="bg-white p-6 rounded-3xl shadow-lg transform translate-y-8">
+                        <div class="w-8 h-8 bg-blue-100 rounded-full mb-4"></div>
+                        <div class="h-2 w-24 bg-gray-100 rounded mb-2"></div>
+                        <div class="h-2 w-16 bg-gray-100 rounded"></div>
+                     </div>
+                      <div class="bg-white p-6 rounded-3xl shadow-lg">
+                        <div class="w-8 h-8 bg-green-100 rounded-full mb-4"></div>
+                        <div class="h-2 w-24 bg-gray-100 rounded mb-2"></div>
+                        <div class="h-2 w-full bg-gray-100 rounded mb-2"></div>
+                        <div class="h-2 w-16 bg-gray-100 rounded"></div>
+                     </div>
+                      <div class="bg-white p-6 rounded-3xl shadow-lg col-span-2">
+                         <div class="flex justify-between items-end">
+                            <div class="flex gap-2 items-end">
+                                <div class="w-8 h-12 bg-green-200 rounded-t-lg"></div>
+                                <div class="w-8 h-16 bg-green-300 rounded-t-lg"></div>
+                                <div class="w-8 h-10 bg-green-400 rounded-t-lg"></div>
+                                <div class="w-8 h-20 bg-green-500 rounded-t-lg"></div>
+                            </div>
+                            <div class="text-right">
+                                <span class="block text-2xl font-bold text-primary">100%</span>
+                                <span class="text-xs text-gray-400">Completion</span>
+                            </div>
+                         </div>
+                     </div>
+                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Simple Pricing -->
+    <PricingSection 
+      client:load
+      title={t('nutri.pricing.title')}
+      subtitle="Start free, upgrade as you grow."
+      translations={{
+        monthly: "/mo",
+        startTrial: "Start Free Trial",
+        getStarted: "Get Started",
+        popular: "POPULAR"
+      }}
+      plans={[
+        {
+          title: "Nutrition",
+          description: "Perfect for starting out.",
+          priceMXN: 349,
+          priceUSD: 20,
+          features: [
+            "10 AI-generated diets/mo",
+            "Unlimited meal plans",
+            "Basic reporting"
+          ]
+        },
+        {
+          title: "Nutrition + Training",
+          description: "For growing practices & clinics.",
+          priceMXN: 599,
+          priceUSD: 35,
+          isPopular: true,
+          features: [
+            "20 AI-generated diets/mo",
+            "Custom branding",
+            "Advanced analytics & exports"
+          ]
+        }
+      ]}
+    />
+
+  </main>
+  
+  <Footer />
+</Layout>

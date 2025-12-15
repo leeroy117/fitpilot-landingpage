@@ -1,0 +1,101 @@
+---
+import { useTranslations } from '../i18n/utils';
+
+const lang = Astro.currentLocale || 'en';
+const t = useTranslations(lang as any);
+---
+<section class="grid grid-cols-1 md:grid-cols-2 w-full">
+  <!-- Training Side -->
+  <div class="bg-blue-50/50 p-12 md:p-20 relative overflow-hidden group">
+    <div class="relative z-10 max-w-lg mx-auto md:ml-auto md:mr-0">
+      <div class={`inline-flex items-center gap-2
+      text-primary font-bold text-sm
+      tracking-wider uppercase mb-4`}>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72Z"/><path d="m14 7 3 3"/><path d="M5 6v4"/><path d="M19 14v4"/><path d="M10 2v2"/><path d="M7 8H3"/><path d="M21 16h-4"/><path d="M11 3H9"/></svg>
+        {t('features.trainers_badge')}
+      </div>
+      
+      <h2 class="text-3xl md:text-4xl font-display font-bold text-secondary mb-6 leading-tight">
+        {t('features.trainers_title_1')} <br/>
+        <span class="text-primary">{t('features.trainers_title_2')}</span>
+      </h2>
+      
+      <p class="text-gray-600 mb-8 leading-relaxed">
+        {t('features.trainers_desc')}
+      </p>
+
+      <ul class="space-y-4 mb-8">
+        <li class="flex items-center gap-3 text-gray-700 font-medium">
+          <div class="bg-primary/20 p-1 rounded text-primary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          </div>
+          {t('features.trainers_list_1')}
+        </li>
+        <li class="flex items-center gap-3 text-gray-700 font-medium">
+          <div class="bg-primary/20 p-1 rounded text-primary">
+             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          </div>
+          {t('features.trainers_list_2')}
+        </li>
+         <li class="flex items-center gap-3 text-gray-700 font-medium">
+          <div class="bg-primary/20 p-1 rounded text-primary">
+             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          </div>
+          {t('features.trainers_list_3')}
+        </li>
+      </ul>
+
+      <a href="#" class="inline-flex items-center gap-2 text-primary font-bold hover:gap-3">
+        {t('features.explore')}
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- Nutrition Side -->
+  <div class="bg-nutrition-50/50 p-12 md:p-20 relative overflow-hidden group">
+     <div class="relative z-10 max-w-lg mx-auto md:mr-auto md:ml-0">
+      <div class={`inline-flex items-center gap-2
+      text-nutrition-600 font-bold text-sm
+      tracking-wider uppercase mb-4`}>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.8 2.3A5 5 0 0 0 8 7a5 5 0 0 1 8 0 5 5 0 0 0 3-4.7"/><path d="M12 21a10 10 0 0 0 10-10c0-5.52-4.48-10-10-10S2 5.52 2 11a10 10 0 0 0 10 10z"/></svg>
+        {t('features.nutritionists_badge')}
+      </div>
+      
+      <h2 class="text-3xl md:text-4xl font-display font-bold text-nutrition-900 mb-6 leading-tight">
+        {t('features.nutritionists_title_1')} <br/>
+        <span class="text-nutrition-500">{t('features.nutritionists_title_2')}</span>
+      </h2>
+      
+      <p class="text-gray-600 mb-8 leading-relaxed">
+        {t('features.nutritionists_desc')}
+      </p>
+
+      <ul class="space-y-4 mb-8">
+        <li class="flex items-center gap-3 text-gray-700 font-medium">
+          <div class="bg-nutrition-500/20 p-1 rounded text-nutrition-600">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          </div>
+          {t('features.nutritionists_list_1')}
+        </li>
+        <li class="flex items-center gap-3 text-gray-700 font-medium">
+          <div class="bg-nutrition-500/20 p-1 rounded text-nutrition-600">
+             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          </div>
+          {t('features.nutritionists_list_2')}
+        </li>
+         <li class="flex items-center gap-3 text-gray-700 font-medium">
+          <div class="bg-nutrition-500/20 p-1 rounded text-nutrition-600">
+             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          </div>
+          {t('features.nutritionists_list_3')}
+        </li>
+      </ul>
+
+      <a href="#" class="inline-flex items-center gap-2 text-nutrition-600 font-bold hover:gap-3">
+        {t('features.see_features')}
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>

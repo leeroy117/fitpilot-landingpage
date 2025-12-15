@@ -1,0 +1,19 @@
+---
+import { useTranslations } from '../i18n/utils';
+import VisualCard from './VisualCard.astro';
+
+const lang = Astro.currentLocale || 'en';
+const t = useTranslations(lang as any);
+
+const visuals = [
+  { src: '/visual_gym_weights.png', alt: t('visuals.gym') },
+  { src: '/visual_salad_bowl.png', alt: t('visuals.meal') },
+  { src: '/visual_athlete_tying.png', alt: t('visuals.athlete') },
+  { src: '/visual_avocado_toast_v2.png', alt: t('visuals.plan') },
+];
+---
+<section class="grid grid-cols-2 lg:grid-cols-4 w-full">
+  {visuals.map((visual) => (
+    <VisualCard src={visual.src} alt={visual.alt} />
+  ))}
+</section>

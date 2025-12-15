@@ -1,0 +1,46 @@
+---
+import { MotionButton } from '@components/MotionButton';
+import { useTranslations } from '../i18n/utils';
+import LanguagePicker from './LanguagePicker.astro';
+
+
+const lang = Astro.currentLocale || 'en';
+const t = useTranslations(lang as any);
+---
+<nav class={`fixed w-full z-50 
+  bg-white/80 backdrop-blur-md border-b 
+  border-gray-100
+  shadow-sm shadow-gray-100
+`}>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <a href={lang === 'es' ? '/es' : '/'} class="flex items-center gap-2 transition-opacity hover:opacity-80">
+        <img src="/fitpilot_logo.png" alt="FitPilot" class="h-12 w-auto object-contain" />
+      </a>
+      
+      <div class="hidden md:flex items-center space-x-8">
+        <a href={lang === 'es' ? '/es/trainers' : '/trainers'} class={`
+            text-gray-600 hover:text-primary 
+            font-medium text-sm transition-colors
+        `}>{t('nav.trainers')}</a>
+        <a href={lang === 'es' ? '/es/nutritionists' : '/nutritionists'} class={`
+            text-gray-600 hover:text-primary 
+            font-medium text-sm transition-colors
+        `}>{t('nav.nutritionists')}</a>
+        <a href="#" class={`
+            text-gray-600 hover:text-primary 
+            font-medium text-sm transition-colors
+        `}>{t('nav.platform')}</a>
+      </div>
+
+      <MotionButton client:load className={`bg-primary hover:bg-primary/90 
+      text-white px-5 py-2 rounded-xl font-medium text-sm transition-colors 
+        shadow-md  cursor-pointer`}
+      >
+        {t('nav.explore')}
+      </MotionButton>
+
+      <LanguagePicker />
+    </div>
+  </div>
+</nav>

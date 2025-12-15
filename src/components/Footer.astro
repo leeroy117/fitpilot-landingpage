@@ -1,0 +1,75 @@
+---
+import { useTranslations } from '../i18n/utils';
+
+const lang = Astro.currentLocale || 'en';
+const t = useTranslations(lang as any);
+---
+<footer class="bg-gray-50 pt-16 pb-8 border-t border-gray-100">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+      <!-- Brand -->
+      <div class="space-y-4">
+        <div class="flex items-center gap-2">
+            <div class="bg-primary/10 p-1.5 rounded-lg">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+            </div>
+            <span class="font-display font-bold text-xl text-secondary">FitPilot</span>
+        </div>
+        <p class="text-gray-500 text-sm leading-relaxed">
+          {t('footer.tagline')}
+        </p>
+      </div>
+
+      <!-- Links -->
+      <div>
+        <h4 class="font-bold text-secondary mb-4">{t('footer.product')}</h4>
+        <ul class="space-y-2 text-sm text-gray-500">
+           <li><a href="#" class="hover:text-primary transition-colors">{t('footer.features')}</a></li>
+           <li><a href="#" class="hover:text-primary transition-colors">{t('nav.trainers')}</a></li>
+           <li><a href="#" class="hover:text-primary transition-colors">{t('nav.nutritionists')}</a></li>
+           <li><a href="#" class="hover:text-primary transition-colors">{t('footer.pricing')}</a></li>
+        </ul>
+      </div>
+
+       <div>
+        <h4 class="font-bold text-secondary mb-4">{t('footer.support')}</h4>
+        <ul class="space-y-2 text-sm text-gray-500">
+           <li><a href="#" class="hover:text-primary transition-colors">{t('footer.help_center')}</a></li>
+           <li><a href="#" class="hover:text-primary transition-colors">{t('footer.contact')}</a></li>
+           <li><a href="#" class="hover:text-primary transition-colors">{t('footer.privacy')}</a></li>
+           <li><a href="#" class="hover:text-primary transition-colors">{t('footer.terms')}</a></li>
+        </ul>
+      </div>
+
+      <!-- Newsletter -->
+      <div>
+        <h4 class="font-bold text-secondary mb-4">{t('footer.updates')}</h4>
+        <p class="text-xs text-gray-500 mb-2">{t('footer.subscribe')}</p>
+        <form class="flex gap-2">
+          <input type="email" placeholder={t('footer.email_placeholder')} class={`flex-1 bg-white
+          border border-gray-200 rounded-lg
+          px-3 py-2 text-sm focus:outline-none 
+          focus:border-primary focus:ring-1 focus:ring-primary`}/>
+          <button type="submit" class={`
+              bg-secondary text-white p-2 rounded-lg 
+              hover:bg-secondary/90 transition-colors
+          `}>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg>
+          </button>
+        </form>
+      </div>
+    </div>
+    
+    <div class={`border-t border-gray-200
+    pt-8 flex flex-col md:flex-row
+    justify-between items-center gap-4
+    text-xs text-gray-400`}>
+      <p>{t('footer.copyright')}</p>
+       <div class="flex gap-4">
+          <a href="#" class="hover:text-gray-600">Twitter/X</a>
+          <a href="#" class="hover:text-gray-600">LinkedIn</a>
+          <a href="#" class="hover:text-gray-600">Instagram</a>
+       </div>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,241 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import { MotionButton } from '../components/MotionButton';
+import { PricingSection } from '../components/PricingSection';
+import { useTranslations } from '../i18n/utils';
+
+const lang = Astro.currentLocale || 'en';
+const t = useTranslations(lang as any);
+
+// SVG Icons
+const DumbbellIcon = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" /></svg>`;
+const ChartLineIcon = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941" /></svg>`;
+const CalendarIcon = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 9v7.5" /></svg>`;
+
+---
+
+<Layout title={t('train.meta.title')}>
+  <Navbar />
+  
+  <main class="overflow-hidden">
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 bg-slate-50 relative overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div class="space-y-8 animate-fade-in-up">
+                <h1 class="text-5xl lg:text-7xl font-display font-bold text-gray-900 leading-[1.1]">
+                    {t('train.hero.title')}
+                </h1>
+                <p class="text-xl text-gray-500 max-w-lg leading-relaxed">
+                    {t('train.hero.description')}
+                </p>
+                <div class="flex flex-wrap gap-4">
+                     <MotionButton client:load className={`
+                         bg-primary hover:bg-primary/90 text-white px-8 py-4 
+                         rounded-xl font-medium shadow-lg transition-colors
+                       `}>
+                        {t('train.hero.start')}
+                      </MotionButton>
+                       <MotionButton client:load className={`
+                         bg-white border border-gray-200 text-gray-700 
+                         hover:bg-gray-50 px-8 py-4 rounded-xl font-medium transition-colors
+                       `}>
+                         {t('train.hero.demo')}
+                      </MotionButton>
+                </div>
+                <p class="text-sm text-gray-400 font-medium tracking-wide uppercase">{t('train.hero.subtext')}</p>
+            </div>
+            
+             <!-- Hero Image with floating effect -->
+            <div class="relative animate-fade-in-right">
+                <div class="absolute -top-10 -right-10 w-64 h-64 bg-primary/20 rounded-full blur-3xl rounded-full"></div>
+                <div class={`
+                    relative rounded-2xl overflow-hidden shadow-2xl border-4 
+                    border-white transform rotate-1 hover:rotate-0 
+                    transition-transform duration-700
+                `}>
+                    <img src="/trainer_hero.png" alt="Trainer with tablet" class="w-full h-auto object-cover" />
+                    <!-- Floating Badge -->
+                    <div class={`
+                        absolute bottom-6 left-6 bg-white/95 backdrop-blur-sm 
+                        p-4 rounded-xl shadow-lg flex items-center gap-4
+                    `}>
+                         <div class={`
+                             w-12 h-12 bg-green-100 rounded-full 
+                             flex items-center justify-center text-green-600
+                         `}>
+                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941" /></svg>
+                         </div>
+                         <div>
+                             <p class="text-xs text-gray-500 font-semibold uppercase">{t('train.hero.badge.client_progress')}</p>
+                             <p class="text-sm font-bold text-gray-900">{t('train.hero.badge.total_records')}</p>
+                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Certification Logos -->
+     <!-- <section class="py-10 border-b border-gray-100 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-center items-center gap-8 md:gap-16 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+                 <span class="text-xl font-bold font-display text-gray-400">NASM</span>
+                 <span class="text-xl font-bold font-display text-gray-400">ACE</span>
+                 <span class="text-xl font-bold font-display text-gray-400">ISSA</span>
+                 <span class="text-xl font-bold font-display text-gray-400">NSCA</span>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Features Grid -->
+    <section class="py-24 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <h2 class="text-4xl font-display font-bold text-primary mb-4">{t('train.feat.main_title')}</h2>
+          <p class="text-xl text-gray-500">{t('train.feat.main_subtitle')}</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+             {[
+            { title: t('train.feat1.title'), desc: t('train.feat1.desc'), icon: DumbbellIcon, color: 'text-blue-600', bg: 'bg-blue-50' },
+            { title: t('train.feat2.title'), desc: t('train.feat2.desc'), icon: ChartLineIcon, color: 'text-purple-600', bg: 'bg-purple-50' },
+            { title: t('train.feat3.title'), desc: t('train.feat3.desc'), icon: CalendarIcon, color: 'text-orange-600', bg: 'bg-orange-50' },
+          ].map((feature) => (
+            <div class={`
+                p-8 rounded-3xl border border-gray-100 hover:shadow-xl 
+                hover:-translate-y-1 transition-all duration-300 bg-white group
+            `}>
+              <div class={`w-12 h-12 rounded-xl ${feature.bg} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform ${feature.color}`} set:html={feature.icon} />
+              <h3 class="text-xl font-bold text-primary mb-3">{feature.title}</h3>
+              <p class="text-gray-500 leading-relaxed">{feature.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Command Center Visual -->
+    <section class="py-24 bg-gray-50 text-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+             <span class="inline-block px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-bold uppercase tracking-wider mb-6">{t('train.pro_features')}</span>
+             <h2 class="text-4xl font-bold text-primary mb-4">{t('train.command.title')}</h2>
+             <p class="text-xl text-gray-500 max-w-2xl mx-auto mb-12">{t('train.command.subtitle')}</p>
+             
+             <div class="relative mx-auto max-w-5xl rounded-2xl shadow-2xl overflow-hidden border border-gray-200 bg-white">
+                 <img src="/trainer_dashboard.png" alt={t('train.img_alt.dashboard')} class="w-full h-auto" />
+             </div>
+        </div>
+    </section>
+
+    <!-- How it works steps -->
+    <section class="py-24 bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                 <div class="space-y-10 order-2 lg:order-1">
+                     <h2 class="text-4xl font-bold text-primary mb-8">{t('train.works.title')}</h2>
+                      <div class="space-y-8">
+                         {[
+                             { title: t('train.works.step1.title'), desc: t('train.works.step1.desc'), icon: '1' },
+                             { title: t('train.works.step2.title'), desc: t('train.works.step2.desc'), icon: '2' },
+                             { title: t('train.works.step3.title'), desc: t('train.works.step3.desc'), icon: '3' },
+                         ].map((step) => (
+                             <div class="flex gap-6">
+                                 <div class={`
+                                     w-10 h-10 rounded-full bg-blue-500 text-white 
+                                     flex items-center justify-center font-bold text-lg shrink-0
+                                 `}>
+                                     {step.icon}
+                                 </div>
+                                 <div>
+                                     <h3 class="text-xl font-bold text-gray-900">{step.title}</h3>
+                                     <p class="text-gray-500 mt-2">{step.desc}</p>
+                                 </div>
+                             </div>
+                         ))}
+                      </div>
+                 </div>
+                 <div class="order-1 lg:order-2 relative">
+                      <!-- Using a nice visual for the 'trainer working' -->
+                      <div class={`
+                          rounded-3xl overflow-hidden shadow-2xl transform lg:rotate-2 
+                          hover:rotate-0 transition-transform duration-500
+                      `}>
+                          <img src="/trainer_hero.png" alt={t('train.img_alt.working')} class="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity" />
+                          <!-- Overlay gradient -->
+                           <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                           <div class="absolute bottom-6 left-6 text-white font-bold text-2xl" set:html={t('train.quote_smarter')} />
+                      </div>
+                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <PricingSection 
+      client:load
+      title="Simple Pricing for Trainers"
+      subtitle="Focus on your clients, not your billing."
+      translations={{
+          monthly: "/mo",
+          startTrial: "Start Free Trial",
+          getStarted: "Get Started",
+          popular: "POPULAR"
+      }}
+      plans={[
+          {
+            title: "Training",
+            description: "Essential tools for personal trainers.",
+            priceMXN: 299,
+            priceUSD: 18,
+            features: [
+              "Up to 20 active clients",
+              "Workout builder access",
+              "Client progress tracking"
+            ]
+          },
+          {
+            title: "Complete",
+            description: "For trainers who want to do it all.",
+            priceMXN: 599,
+            priceUSD: 35,
+            isPopular: true,
+            features: [
+              "Unlimited clients",
+              "Nutrition + Training tools",
+              "Advanced analytics & exports"
+            ]
+          }
+      ]}
+    />
+
+    <!-- Simple CTA -->
+    <section class="py-20 bg-blue-600 text-white text-center">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-6">{t('train.cta.title')}</h2>
+            <p class="text-xl text-blue-100 mb-10">{t('train.cta.subtitle')}</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <MotionButton client:load className={`
+                    bg-white text-blue-600 px-8 py-4 rounded-xl 
+                    font-bold shadow-lg hover:bg-gray-100 transition-colors
+                `}>
+                    {t('train.cta.btn')}
+                </MotionButton>
+                 <MotionButton client:load className={`
+                     bg-blue-700 border border-blue-500 text-white 
+                     px-8 py-4 rounded-xl font-medium hover:bg-blue-800 transition-colors
+                 `}>
+                    {t('train.cta.view_pricing')}
+                </MotionButton>
+            </div>
+             <p class="mt-8 text-sm text-blue-200 opacity-80">{t('train.cta.footer_note')}</p>
+        </div>
+    </section>
+
+  </main>
+  
+  <Footer />
+</Layout>

@@ -1,0 +1,51 @@
+---
+import { languages } from '../i18n/ui';
+
+const lang = Astro.currentLocale || 'en';
+
+// Determine target language and URL
+const targetLang = lang === 'en' ? 'es' : 'en';
+const label = targetLang === 'en' ? 'EN' : 'ES'; // Show the language we will switch TO? Or current?
+// Usually a switcher shows current or allows picking. 
+// If it's a toggle, "ES" (to switch to Spanish) when in English is common.
+// Or we can show both "EN | ES" and highlight current. 
+// Let's try a dropdown-like appearance or just a toggle. 
+// User asked for "elegant button". 
+
+// Let's do a simple link to the other language. 
+// If in 'en' (/), go to '/es'.
+// If in 'es' (/es), go to '/'.
+
+const pathname = Astro.url.pathname;
+let targetUrl = '';
+
+if (lang === 'en') {
+  // Switching to ES: Prepend /es
+  // Handle root case carefully if needed, but usually /es + / -> /es/
+  // Astro often normalizes. calling /es/page is fine.
+  targetUrl = '/es' + pathname;
+} else {
+  // Switching to EN: Remove /es prefix
+  // Pathname is like /es/page or /es
+  targetUrl = pathname.replace(/^\/es/, '') || '/';
+}
+---
+<a href={targetUrl} class="
+  ml-4
+  inline-flex items-center gap-2 
+  px-3 py-2 
+  rounded-full 
+  bg-gray-50 hover:bg-gray-100 
+  border border-gray-200 
+  text-sm font-medium text-gray-600 
+  transition-all duration-300
+  hover:shadow-sm
+  group
+" aria-label={`Switch to ${languages[targetLang]}`}>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-400 group-hover:text-primary transition-colors">
+    <circle cx="12" cy="12" r="10"></circle>
+    <line x1="2" y1="12" x2="22" y2="12"></line>
+    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+  </svg>
+  <span class="group-hover:text-primary transition-colors">{label}</span>
+</a>
