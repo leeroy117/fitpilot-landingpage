@@ -1,25 +1,135 @@
 ---
-import '@styles/global.css';
-import Layout from '@layouts/Layout.astro';
-import Navbar from '@components/Navbar.astro';
-import Hero from '@components/Hero.astro';
-import Features from '@components/Features.astro';
-import Management from '@components/Management.astro';
-import Visuals from '@components/Visuals.astro';
-import CTA from '@components/CTA.astro';
-import Footer from '@components/Footer.astro';
+import Layout from '../layouts/Layout.astro';
+import { useTranslations } from '../i18n/utils';
+
+const lang = Astro.currentLocale || 'en';
+const t = useTranslations(lang as any);
 ---
 
-<Layout>
-  <Navbar />
-  
-  <main>
-    <Hero />
-    <Features />
-    <Management />
-    <Visuals />
-    <CTA />
-  </main>
+<Layout title="FitPilot - Choose your path">
+  <!-- Interactive Background Setup -->
+  <div class="fixed inset-0 bg-slate-50 overflow-hidden">
+      <!-- Animated Blobs -->
+      <div class="absolute top-0 -left-40 w-96 h-96 bg-purple-200/40 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob"></div>
+      <div class="absolute top-0 -right-40 w-96 h-96 bg-blue-200/40 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000"></div>
+      <div class="absolute -bottom-40 left-20 w-96 h-96 bg-green-200/40 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-4000"></div>
+  </div>
 
-  <Footer />
+  <main class="relative min-h-screen flex flex-col items-center justify-center p-4 sm:p-8">
+      
+      <!-- Brand Logo -->
+      <div class="mb-12 md:mb-16" data-aos="fade-down" data-aos-duration="1000">
+          <img src="/fitpilot_logo.png" alt="FitPilot" class="h-16 md:h-20 w-auto object-contain drop-shadow-sm" />
+      </div>
+
+      <!-- Content Container -->
+      <div class="w-full max-w-5xl mx-auto">
+          <div class="text-center mb-12" data-aos="fade-up">
+              <h1 class="text-4xl md:text-5xl font-display font-bold text-gray-900 mb-4 tracking-tight">
+                  {lang === 'es' ? 'Bienvenido a FitPilot' : 'Welcome to FitPilot'}
+              </h1>
+              <p class="text-xl text-gray-500 max-w-2xl mx-auto font-light">
+                  {lang === 'es' 
+                    ? 'La plataforma más completa para profesionales de la salud y sus clientes.' 
+                    : 'The most complete platform for health professionals and their clients.'}
+              </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 px-2 md:px-0">
+              
+              <!-- Option 1: Client / Search -->
+             <a href={lang === 'es' ? '/es/explore' : '/explore'} 
+                class="group relative bg-white rounded-[2.5rem] p-2 hover:-translate-y-2 transition-all duration-500 ease-out shadow-xl hover:shadow-2xl hover:shadow-primary/20 cursor-pointer border border-gray-100/50"
+                data-aos="fade-right" data-aos-duration="800"
+             >
+                <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent rounded-[2.5rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                
+                <div class="relative h-full flex flex-col items-center text-center p-8 md:p-12 z-10">
+                    <div class="w-24 h-24 mb-8 rounded-3xl bg-blue-50 text-primary flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                        </svg>
+                    </div>
+                    
+                    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-3 font-display">
+                        {t('hero.choice.client')}
+                    </h2>
+                    <p class="text-gray-500 font-medium mb-8 leading-relaxed">
+                        {lang === 'es' 
+                            ? 'Encuentra al entrenador o nutricionista ideal para alcanzar tus objetivos.' 
+                            : 'Find the perfect trainer or nutritionist to reach your goals.'}
+                    </p>
+                    
+                    <div class="mt-auto">
+                        <span class="inline-flex items-center gap-2 text-primary font-bold text-lg group-hover:gap-3 transition-all">
+                            {lang === 'es' ? 'Explorar Catálogo' : 'Explore Catalog'}
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+             </a>
+
+             <!-- Option 2: Professional / Platform -->
+             <a href={lang === 'es' ? '/es/platform' : '/platform'} 
+                class="group relative bg-white rounded-[2.5rem] p-2 hover:-translate-y-2 transition-all duration-500 ease-out shadow-xl hover:shadow-2xl hover:shadow-secondary/20 cursor-pointer border border-gray-100/50"
+                data-aos="fade-left" data-aos-duration="800"
+             >
+                <div class="absolute inset-0 bg-gradient-to-br from-secondary/5 to-transparent rounded-[2.5rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                
+                <div class="relative h-full flex flex-col items-center text-center p-8 md:p-12 z-10">
+                    <div class="w-24 h-24 mb-8 rounded-3xl bg-orange-50 text-secondary flex items-center justify-center group-hover:scale-110 group-hover:-rotate-3 transition-all duration-500 shadow-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5m.75-9l3-3 2.148 2.148A12.061 12.061 0 0116.5 7.605" />
+                        </svg>
+                    </div>
+                    
+                    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-3 font-display">
+                        {t('hero.choice.pro')}
+                    </h2>
+                    <p class="text-gray-500 font-medium mb-8 leading-relaxed">
+                        {lang === 'es' 
+                            ? 'Descubre herramientas potentes para gestionar y escalar tu negocio.' 
+                            : 'Discover powerful tools to manage and scale your business.'}
+                    </p>
+                    
+                    <div class="mt-auto">
+                        <span class="inline-flex items-center gap-2 text-secondary font-bold text-lg group-hover:gap-3 transition-all">
+                            {lang === 'es' ? 'Ver Plataforma' : 'View Platform'}
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+             </a>
+
+          </div>
+      </div>
+
+      <!-- Footer Elements -->
+      <div class="mt-12 md:absolute md:bottom-8 md:text-sm text-xs text-gray-400 font-medium tracking-wide">
+          <p>© 2024 FitPilot Inc.</p>
+      </div>
+
+  </main>
 </Layout>
+
+<style>
+  @keyframes blob {
+    0% { transform: translate(0px, 0px) scale(1); }
+    33% { transform: translate(30px, -50px) scale(1.1); }
+    66% { transform: translate(-20px, 20px) scale(0.9); }
+    100% { transform: translate(0px, 0px) scale(1); }
+  }
+  .animate-blob {
+    animation: blob 7s infinite;
+  }
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+</style>

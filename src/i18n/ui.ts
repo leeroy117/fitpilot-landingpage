@@ -87,6 +87,18 @@ export const ui = {
     'hero.calculated': 'Calculated: 2,400 kcal',
     'hero.health_metrics': 'Health Metrics',
     'hero.latest_review': 'Latest Review: Fit',
+    
+    'hero.choice.client': 'I want to challenge my limits',
+    'hero.choice.pro': 'I am a Professional',
+
+    'catalog.title': 'Find Your Perfect Coach',
+    'catalog.subtitle': 'Browse our catalog of certified trainers and nutritionists ready to help you reach your goals.',
+    'catalog.search_placeholder': 'Search by name, specialty, or location...',
+    'catalog.filter.all': 'All Professionals',
+    'catalog.filter.trainers': 'Trainers',
+    'catalog.filter.nutritionists': 'Nutritionists',
+    'catalog.card.contact': 'Contact Profile',
+    'catalog.card.specialties': 'Specialties',
 
     'features.trainers_badge': 'For Trainers',
     'features.trainers_title_1': 'Build & Manage',
@@ -258,6 +270,18 @@ export const ui = {
     'hero.calculated': 'Calculado: 2,400 kcal',
     'hero.health_metrics': 'Métricas de Salud',
     'hero.latest_review': 'Última Revisión: En Forma',
+
+    'hero.choice.client': 'Quiero desafiar mis límites',
+    'hero.choice.pro': 'Soy un Profesional',
+
+    'catalog.title': 'Encuentra a tu Coach Ideal',
+    'catalog.subtitle': 'Explora nuestro catálogo de entrenadores y nutricionistas certificados listos para ayudarte a lograr tus metas.',
+    'catalog.search_placeholder': 'Buscar por nombre, especialidad o ubicación...',
+    'catalog.filter.all': 'Todos',
+    'catalog.filter.trainers': 'Entrenadores',
+    'catalog.filter.nutritionists': 'Nutricionistas',
+    'catalog.card.contact': 'Contactar Perfil',
+    'catalog.card.specialties': 'Especialidades',
 
     'features.trainers_badge': 'Para Entrenadores',
     'features.trainers_title_1': 'Crea y Gestiona',
